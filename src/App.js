@@ -17,10 +17,22 @@ function App() {
 	const addItem = item => {
 		setCart([...cart, item]);
 	};
+	const removeItem = (id) =>{
+		let count = 0;
+		let newCart = [];
+		cart.forEach((item,index)=>{
+			if(item.id==id && count == 0){
+				count++;
+			} else {
+				newCart.push(item);
+			}
+		setCart(newCart);
+		})
+	}
 
 	return (
 		<ProductContext.Provider value={{products,addItem}}>
-			<CartContext.Provider value={cart}>
+			<CartContext.Provider value={{cart,removeItem}}>
 		<div className="App">
 			<Navigation cart={cart} />
 
