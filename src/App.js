@@ -15,7 +15,16 @@ function App() {
 	const [cart, setCart] = useState([]);
 
 	const addItem = item => {
-		setCart([...cart, item]);
+		let exists = false;
+		// console.log(item);
+		cart.forEach(book=>{
+			if(item.id===book.id){
+				exists = true
+			}
+		})
+		if(exists==false){
+			setCart([...cart, item]);
+		}
 	};
 	const removeItem = (id) =>{
 		let count = 0;
